@@ -13,11 +13,11 @@
             <% @books.each do |book| %>
             <tr>
                 <%= link_to book_path(book.id) do%>
-                 <td><%= book.title %></td>
+                  <td><%= book.title %></td>
                 <% end %>
                  <td><%= book.body %></td>
-           
-                
+
+
             </tr>
             <% end %>
 
