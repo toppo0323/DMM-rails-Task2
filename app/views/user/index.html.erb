@@ -1,42 +1,57 @@
-<h2>User info</h2>
-    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100',format: 'no_image.jpg' %>
-<h5>name</h5>
-    <%= @user.name %>
-<h5>introduction</h5>
-    <%= @user.introduction %>
-<%= link_to "edit",edit_user_path(current_user.id)%>
+<div class = "container px-5 px-sm-0">
+  <div class = "row">
+    <div class = "col-md-3">
+      <table class = "table table-user">
+        <h2>User info</h2>
+          <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg",size:'100x100',format: 'no_image.jpg' %>
+            <tbody>
+              <tr>
+               <th>name</th>
+                <th><%= @user.name %></th>
+              </tr>
+              <tr>
+                <th>introduction</th>
+                  <th><%= @user.introduction %></th>
+              </tr>
+            </tbody>
+      </table>
+          <%= link_to "",edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block fas fa-user-cog edit_user_7693"%>
+      
+
+        <h2>New book</h2>
+            <%= form_with model:@book,local:true do |f| %>
+          <p>Title</p>
+            <%= f.text_field :title %>
+          <p>Opinion</p>
+            <%= f.text_area :body %>
+          <%= f.submit 'Create Book'%>
+        <% end %>
+    </div>
 
 
-<h2>New book</h2>
-      <%= form_with model:@book,local:true do |f| %>
-<h4>title</h4>
-      <%= f.text_field :title %>
-<h4>opinion</h4>
-      <%= f.text_area :body %>
-<%= f.submit 'Create Book'%>
-  <% end %>
-
-
-<h2>Users</h2>
-<table>
-    
-    <thead>
+    <div class = "col-md-8 offser-md-1">
+        <h2>Users</h2>
+    <table class = "table table-hover table-inverse">
+      <thead>
         <tr>
          <th>image</th>
          <th>name</th>
-         <th></th>
         </tr>
-    </thead>
+      </thead>
 
-    <tbody>
+      <tbody>
          <% @users.each do |user| %>
-         
+
         <tr>
             <td><%= attachment_image_tag user, :profile_image, :fill, 20, 20, fallback: "no_image.jpg",size:'20x20',format: 'no_image.jpg' %></td>
             <td><%= user.name %></td>
             <td><%= link_to "Show",user_path(user.id) , class: "link"%></td>
         </tr>
          <% end %>
-    </tbody>
-   
-</table>
+      </tbody>
+
+    </table>
+      
+    </div>
+  </div>
+</div>

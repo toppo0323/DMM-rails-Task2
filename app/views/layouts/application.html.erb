@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Task2</title>
+    <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta charset="utf-8">
@@ -13,41 +13,61 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  
   <body>
-    
-    
-   <% if user_signed_in? %>
-     <%= link_to "Bookers",root_path %>
-       <li>
-         <%= link_to "Home", user_path(current_user.id) %>
-       </li>
-       <li>
-         <%= link_to "Users",user_index_path %>
-       </li>
-       <Li>
-         <%= link_to "Books",books_path %>
-       </Li>
-      <li>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-    <%= link_to "Bookers",root_path %>
-      <li>
-        <%= link_to "Home", root_path %>
-      </li>
-      <li>
-        <%= link_to "About",top_books_path %>
-      </li>
-      <li>
-        <%= link_to "sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "login", new_user_session_path %>
-      </li>
+    <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class = "container">
+         <nav class = "nav navbar-brand">
+          <%= link_to "Bookers",root_path, class:"bookers"%>
+         </nav>
       
-    <% end %>
+        <ul class = "nav navbar-nav navbar-right">
+         <% if user_signed_in? %>
+          <li>
+           <%= link_to "Home", user_path(current_user.id), class:"fas fa-home nav-link text-light" %>
+          </li>
+          <li>
+           <%= link_to "Users",user_index_path, class:"fas fa-users nav-link text-light" %>
+          </li>
+          <Li>
+           <%= link_to "Books",books_path, class:"fas fa-book-open nav-link text-light"  %>
+          </Li>
+          <li>
+           <%= link_to "logout", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light"  %>
+          </li>
+          
+         <% else %>
     
-    <%= yield %>
+          <li>
+           <%= link_to "Home", root_path, class:"fas fa-home nav-link text-light" %>
+          </li>
+          <li>
+           <%= link_to "About",homes_path, class:"fas fa-link nav-link text-light"  %>
+          </li>
+          <li>
+           <%= link_to "sign up", new_user_registration_path, class:"fas fa-user-plus nav-link text-light"  %>
+          </li>
+          <li>
+           <%= link_to "login", new_user_session_path, class:"fas fa-sign-in-alt nav-link text-light"  %>
+          </li>
+      
+         <% end %>
+    
+        </ul>
+       </div>
+    </header>
+    
+      <%= yield %>
+    
+    <footer>
+      <div class ="container mt-5">
+        <div class ="row">
+          <div class ="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
     
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

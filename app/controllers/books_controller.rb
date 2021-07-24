@@ -3,8 +3,7 @@ class BooksController < ApplicationController
 before_action :authenticate_user!
 before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
 
-  def top
-  end
+ 
 
   def create
     @user = current_user
@@ -30,7 +29,7 @@ before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
   def show
     @book = Book.new
     @showbook = Book.find(params[:id])
-    @user = current_user
+    @user = @showbook.user
   end
 
   def destroy
