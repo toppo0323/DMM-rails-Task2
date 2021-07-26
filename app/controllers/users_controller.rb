@@ -1,10 +1,10 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
 before_action :authenticate_user!
-before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
+# before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
 
 
-  
+
 
   def new
     @book = Book.new
@@ -22,11 +22,14 @@ before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
     @user = current_user
     @books = Book.all
     @book = Book.new
-    
+
   end
 
   def edit
     @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update
@@ -51,5 +54,5 @@ before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
      redirect_to user_path(current_user.id)
     end
   end
-  
+
   end

@@ -1,7 +1,7 @@
 <p class ="message"><%= flash[:succes] %></p>
 
 
-<div class = "container px-5 px-sm-0">
+<div class = "container">
   <div class = "row">
     <div class = "col-md-3">
       <table class = "table table-user">
@@ -18,7 +18,7 @@
               </tr>
             </tbody>
       </table>
-          <%= link_to "",edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block fas fa-user-cog edit_user_7693"%>
+          <%= link_to "",edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block fas fa-user-cog edit_user_7693"%>
 
 
         <h2>New book</h2>
@@ -32,8 +32,8 @@
     </div>
 
 
-    <div class = "col-md-8 offser-md-1">
-        <h2>Book dertail</h2>
+    <div class = "col-md-8 offset-md-1">
+        <h2>Book detail</h2>
         <table class = "table table-hover table-inverse">
          <tbody>
             <tr>
@@ -46,8 +46,8 @@
                 <td><%= @showbook.body %></td>
 
               <% if @showbook.user_id == current_user.id %>
-                <td><%= link_to "Edit", edit_book_path(@showbook), class:"btn btn-sm btn-success"%></td>
-                <td><%= link_to "Destroy", book_path(@showbook), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %></td>
+                <td><%= link_to "Edit", edit_book_path(@showbook.id), class:"btn btn-sm btn-success"%></td>
+                <td><%= link_to "Destroy", book_path(@showbook.id), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %></td>
               <% end %>
 
             </tr>
